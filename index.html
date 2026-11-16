@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toiga — онлайн-шақыру за 2 минуты</title>
+<meta name="description" content="Тойға онлайн-шақыру: үйлену тойы, қыз ұзату, сүндет той, тұсаукесер, мерейтой. Создайте приглашение-сайт за 2 минуты и отправьте гостям в WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:Montserrat,system-ui,sans-serif;color:#2b2520;background:#f6f1e9;line-height:1.5}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+.serif{font-family:"Cormorant Garamond",Georgia,serif}
+[hidden]{display:none!important}
+
+/* ---------- сайт ---------- */
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:600;letter-spacing:.5px;text-decoration:none}
+.logo b{color:#b08a4a;font-weight:600}
+.lang{display:flex;border:1px solid #d9cdb8;border-radius:99px;overflow:hidden;background:#fff}
+.lang button{border:0;background:none;padding:7px 14px;font-size:13px;font-weight:600;cursor:pointer}
+.lang button.on{background:#2b2520;color:#fff}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:30px 0 60px}
+.hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(38px,6vw,62px);line-height:1.05;text-wrap:balance}
+.hero h1 i{color:#b08a4a}
+.hero p.lead{margin:18px 0 26px;font-size:17px;color:#5d544a;max-width:520px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;padding:15px 24px;font-weight:700;font-size:15px;cursor:pointer;text-decoration:none;background:#2b2520;color:#fff;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn.gold{background:linear-gradient(135deg,#c9a55c,#a57f3d);color:#fff}
+.btn.wa{background:#1fa855;color:#fff}
+.btn.ghost{background:#fff;color:#2b2520;border:1px solid #d9cdb8}
+.btn.full{width:100%}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.badges span{background:#fff;border:1px solid #e4d9c6;border-radius:99px;padding:6px 12px;font-size:12.5px;font-weight:500}
+.phone{width:300px;height:610px;margin:0 auto;border:10px solid #1c1917;border-radius:42px;overflow:hidden;background:#000;box-shadow:0 30px 60px -20px rgba(60,40,10,.45);position:relative}
+.phone .scr{height:100%;overflow-y:auto;scrollbar-width:none}
+.phone .scr::-webkit-scrollbar{display:none}
+section.blk{padding:54px 0}
+h2{font-family:"Cormorant Garamond",serif;font-size:clamp(30px,4.5vw,42px);font-weight:600;line-height:1.1;margin-bottom:24px;text-wrap:balance}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid #e9dfce;border-radius:20px;padding:22px}
+.steps .n{font-family:"Cormorant Garamond",serif;font-size:44px;color:#b08a4a;line-height:1}
+.steps h3{font-size:16px;margin:8px 0 6px}
+.steps p{font-size:14px;color:#6a6055}
+.make{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:flex;flex-direction:column;gap:6px;font-size:12.5px;font-weight:600;color:#5d544a}
+.form .w2{grid-column:1/-1}
+.form input,.form select,.form textarea{border:1px solid #d9cdb8;border-radius:12px;padding:12px 13px;background:#fff;font-size:16px;font-weight:400;color:#2b2520;width:100%;min-width:0}
+.form textarea{min-height:92px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:2px solid #b08a4a;outline-offset:1px}
+.styles{display:flex;gap:10px;flex-wrap:wrap}
+.styles button{border:2px solid transparent;border-radius:14px;padding:10px 14px 10px 10px;background:#fff;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;box-shadow:0 0 0 1px #e4d9c6}
+.styles button.on{border-color:#b08a4a;box-shadow:none}
+.styles i{width:22px;height:22px;border-radius:50%;display:block;border:1px solid rgba(0,0,0,.12)}
+.sticky{position:sticky;top:16px}
+.out{margin-top:18px;border:2px solid #b08a4a;background:#fffaf0}
+.out h3{font-size:17px;margin-bottom:6px}
+.out p{font-size:13.5px;color:#5d544a;margin-bottom:12px}
+.linkrow{display:flex;gap:8px;margin-bottom:12px}
+.linkrow input{flex:1;min-width:0;border:1px solid #d9cdb8;border-radius:12px;padding:12px;font-size:13px;background:#fff}
+.out .btns{display:grid;gap:10px}
+.price{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.price .big{font-family:"Cormorant Garamond",serif;font-size:54px;line-height:1;font-weight:600}
+.price ul{list-style:none;padding:0;margin:14px 0 0;font-size:14px;display:grid;gap:8px}
+.price li::before{content:"✓";color:#a57f3d;font-weight:700;margin-right:8px}
+.price .hot{background:#2b2520;color:#fff;border-color:#2b2520}
+.price .hot li::before{color:#e3c27e}
+.muted{color:#857a6c;font-size:13px}
+.hot .muted{color:#c9bfae}
+details{border-bottom:1px solid #e0d5c2;padding:14px 0}
+summary{font-weight:600;cursor:pointer;font-size:15px}
+details p{margin-top:8px;font-size:14px;color:#5d544a}
+footer.site{padding:36px 0 60px;font-size:13px;color:#857a6c}
+footer.site b{color:#2b2520}
+@media(max-width:860px){
+ .hero{grid-template-columns:1fr;padding-top:10px;gap:34px}
+ .make{grid-template-columns:1fr}
+ .sticky{position:static}
+ .steps,.price{grid-template-columns:1fr}
+}
+@media(max-width:520px){.form{grid-template-columns:1fr}}
+
+/* ---------- приглашение ---------- */
+.inv{--bg:#fbf6ec;--bg2:#f3e9d6;--ink:#3a2f22;--acc:#b08a4a;--card:#ffffffcc;--line:#b08a4a55;
+ position:relative;min-height:100%;background:var(--bg);color:var(--ink);text-align:center;overflow:hidden;
+ background-image:radial-gradient(circle at 20% 0,var(--bg2),transparent 45%),radial-gradient(circle at 90% 30%,var(--bg2),transparent 40%),radial-gradient(circle at 10% 80%,var(--bg2),transparent 40%)}
+.inv.s1{--bg:#10241f;--bg2:#1a3a31;--ink:#f3ead6;--acc:#d9b66c;--card:#ffffff10;--line:#d9b66c55}
+.inv.s2{--bg:#fbf1ef;--bg2:#f5dcd8;--ink:#4a2e33;--acc:#b9737c;--card:#ffffffcc;--line:#b9737c55}
+.inv.s3{--bg:#eef6fa;--bg2:#cfe6f1;--ink:#17384a;--acc:#1f89ad;--card:#ffffffcc;--line:#1f89ad55}
+.inv .in{max-width:460px;margin:0 auto;padding:0 22px}
+.inv .orn{color:var(--acc);width:200px;max-width:70%;height:auto;display:block;margin:0 auto}
+.inv .kind{font-size:11.5px;letter-spacing:4px;text-transform:uppercase;font-weight:600;color:var(--acc)}
+.inv .names{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:46px;line-height:1.08;margin:14px 0;overflow-wrap:anywhere;text-wrap:balance}
+.inv .txt{font-family:"Cormorant Garamond",serif;font-size:20px;line-height:1.45;white-space:pre-line;overflow-wrap:anywhere}
+.inv .sec{padding:34px 0}
+.inv .frame{border:1px solid var(--line);outline:1px solid var(--line);outline-offset:5px;border-radius:4px;background:var(--card);padding:26px 18px;margin:0 6px}
+.inv .lbl{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--acc);font-weight:600;margin-bottom:10px}
+.inv .day{font-family:"Cormorant Garamond",serif;font-size:84px;line-height:1.05;font-weight:500;font-variant-numeric:lining-nums}
+.inv .my{font-size:15px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-top:6px}
+.inv .wd{font-size:14px;opacity:.75;margin-top:4px}
+.inv .time{display:inline-block;margin-top:14px;padding:7px 18px;border:1px solid var(--acc);border-radius:99px;font-weight:600;font-size:15px}
+.inv .cd{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.inv .cd div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 2px}
+.inv .cd b{font-family:"Cormorant Garamond",serif;font-size:32px;font-weight:600;display:block;line-height:1.1;font-variant-numeric:lining-nums tabular-nums}
+.inv .cd span{font-size:10.5px;opacity:.7}
+.inv .place{font-family:"Cormorant Garamond",serif;font-size:28px;line-height:1.15;font-weight:600;overflow-wrap:anywhere}
+.inv .addr{font-size:14px;opacity:.8;margin:8px 0 16px;overflow-wrap:anywhere}
+.inv .ib{text-align:center;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:99px;padding:13px 24px;background:var(--acc);color:#fff;font-weight:700;font-size:14px;text-decoration:none;cursor:pointer}
+.inv .ib.line{background:none;color:var(--ink);border:1px solid var(--acc)}
+.inv .hosts{font-family:"Cormorant Garamond",serif;font-size:26px;font-style:italic;overflow-wrap:anywhere}
+.inv .rsvp{display:grid;gap:10px;text-align:left}
+.inv .rsvp input,.inv .rsvp select{width:100%;border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card);font-size:16px;color:var(--ink)}
+.inv .rsvp option{color:#222}
+.inv .rsvp .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.inv .rsvp .ib{width:100%}
+.inv .note{font-size:12.5px;opacity:.7;text-align:center}
+.inv .made{padding:26px 0 34px;font-size:12px;opacity:.75}
+.inv .made a{font-weight:700}
+.inv .rv{opacity:0;transform:translateY(22px);transition:opacity .8s,transform .8s}
+.inv .rv.on{opacity:1;transform:none}
+.inv .cover{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:40px 22px}
+.inv .cover .names{font-size:54px}
+.inv .cover .cdate{font-size:14px;letter-spacing:3px;margin-bottom:26px}
+.inv .cover .ib{animation:pulse 2.2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 12px transparent}0%,100%{box-shadow:0 0 0 0 var(--line)}}
+.inv .wm{position:absolute;inset:0;pointer-events:none;z-index:3;opacity:.11;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='170'%3E%3Ctext x='10' y='110' transform='rotate(-24 110 85)' font-family='Arial' font-weight='700' font-size='26' fill='%23808080'%3E%D2%AE%D0%9B%D0%93%D0%86 %C2%B7 %D0%94%D0%95%D0%9C%D0%9E%3C/text%3E%3C/svg%3E")}
+.inv .pay{position:sticky;bottom:0;z-index:4;background:#1c1917;color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;text-align:left;font-size:12.5px}
+.inv .pay span{flex:1}
+.inv .pay a{background:#1fa855;color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;text-decoration:none;white-space:nowrap;font-size:13px}
+#view-inv{min-height:100svh}
+#view-inv .inv{min-height:100svh}
+@media(prefers-reduced-motion:reduce){.inv .rv{opacity:1;transform:none;transition:none}.inv .cover .ib{animation:none}}
+</style>
+</head>
+<body>
+
+<div id="view-home">
+ <div class="wrap">
+  <header class="top">
+   <a class="logo" href="./">Toi<b>ga</b></a>
+   <div class="lang"><button data-ui="kk">ҚАЗ</button><button data-ui="ru">РУС</button></div>
+  </header>
+
+  <div class="hero">
+   <div>
+    <h1 data-i="h1"></h1>
+    <p class="lead" data-i="lead"></p>
+    <a class="btn gold" href="#make" data-i="cta"></a>
+    <div class="badges"><span data-i="b1"></span><span data-i="b2"></span><span data-i="b3"></span></div>
+   </div>
+   <div class="phone"><div class="scr" id="heroPrev"></div></div>
+  </div>
+
+  <section class="blk">
+   <h2 data-i="howT"></h2>
+   <div class="steps">
+    <div class="card"><div class="n">1</div><h3 data-i="s1t"></h3><p data-i="s1p"></p></div>
+    <div class="card"><div class="n">2</div><h3 data-i="s2t"></h3><p data-i="s2p"></p></div>
+    <div class="card"><div class="n">3</div><h3 data-i="s3t"></h3><p data-i="s3p"></p></div>
+   </div>
+  </section>
+
+  <section class="blk" id="make">
+   <h2 data-i="makeT"></h2>
+   <div class="make">
+    <div>
+     <form class="form" id="f" autocomplete="off">
+      <label><span data-i="fType"></span><select name="t"></select></label>
+      <label><span data-i="fLang"></span><select name="l"><option value="kk">Қазақша</option><option value="ru">Русский</option></select></label>
+      <label class="w2"><span data-i="fNames"></span><input name="n" maxlength="60" required></label>
+      <label><span data-i="fDate"></span><input name="d" type="date" required></label>
+      <label><span data-i="fTime"></span><input name="h" type="time" required></label>
+      <label class="w2"><span data-i="fPlace"></span><input name="p" maxlength="70" required></label>
+      <label class="w2"><span data-i="fAddr"></span><input name="a" maxlength="90"></label>
+      <label class="w2"><span data-i="fMap"></span><input name="m" type="url" inputmode="url" maxlength="200" placeholder="https://2gis.kz/..."></label>
+      <label><span data-i="fHosts"></span><input name="o" maxlength="60"></label>
+      <label><span data-i="fWa"></span><input name="w" type="tel" inputmode="tel" maxlength="18" placeholder="8 7XX XXX XX XX"></label>
+      <label class="w2"><span data-i="fText"></span><textarea name="x" maxlength="400"></textarea></label>
+      <div class="w2"><label><span data-i="fStyle"></span></label><div class="styles" id="styles" style="margin-top:6px"></div></div>
+      <div class="w2"><button class="btn gold full" type="submit" data-i="fGo"></button></div>
+     </form>
+     <div class="card out" id="out" hidden>
+      <h3 data-i="oT"></h3>
+      <p data-i="oP"></p>
+      <div class="linkrow"><input id="link" readonly><button class="btn ghost" id="copy" type="button" data-i="oCopy"></button></div>
+      <div class="btns">
+       <button class="btn ghost" id="open" type="button" data-i="oOpen"></button>
+       <a class="btn wa" id="payBtn" target="_blank" rel="noopener" data-i="oPay"></a>
+       <p class="muted" style="margin:0" data-i="oNote"></p>
+      </div>
+     </div>
+    </div>
+    <div class="sticky"><div class="phone"><div class="scr" id="prev"></div></div><p class="muted" style="text-align:center;margin-top:12px" data-i="prevNote"></p></div>
+   </div>
+  </section>
+
+  <section class="blk">
+   <h2 data-i="prT"></h2>
+   <div class="price">
+    <div class="card"><div class="muted" data-i="p0n"></div><div class="big">0 ₸</div>
+     <ul><li data-i="p0a"></li><li data-i="p0b"></li><li data-i="p0c"></li></ul></div>
+    <div class="card hot"><div class="muted" data-i="p1n"></div><div class="big">2 990 ₸</div>
+     <ul><li data-i="p1a"></li><li data-i="p1b"></li><li data-i="p1c"></li><li data-i="p1d"></li></ul>
+     <a class="btn gold full" href="#make" style="margin-top:18px" data-i="cta"></a></div>
+   </div>
+  </section>
+
+  <section class="blk">
+   <h2 data-i="fqT"></h2>
+   <details><summary data-i="q1"></summary><p data-i="a1"></p></details>
+   <details><summary data-i="q2"></summary><p data-i="a2"></p></details>
+   <details><summary data-i="q3"></summary><p data-i="a3"></p></details>
+   <details><summary data-i="q4"></summary><p data-i="a4"></p></details>
+  </section>
+
+  <footer class="site">
+   <p><b>Toiga</b> · <span data-i="ft"></span></p>
+   <p style="margin-top:6px">WhatsApp: <a href="https://wa.me/77075269442" target="_blank" rel="noopener"><b>8 707 526 94 42</b></a></p>
+  </footer>
+ </div>
+</div>
+
+<div id="view-inv" hidden></div>
+
+<script>
+/* ===== настройки продавца ===== */
+const PRICE = '2 990 ₸';
+const SELLER_WA = '77075269442';
+/* открытый ключ: им сайт проверяет, что ссылку подписал продавец (оплата). Секретный ключ хранится только у продавца. */
+const PUB = {kty:'EC',crv:'P-256',x:'3WfyA2Y5_hS1w2RcPfRN_gJBFIXaYibJBam9A3ithfs',y:'YeAtuMmZTxsd-qcm4ApVKHhaBTgwTCLNhLt8xXRTCLo'};
+
+/* ===== тексты приглашения ===== */
+const T = {
+ kk:{kinds:['Үйлену тойы','Қыз ұзату тойы','Сүндет той','Тұсаукесер','Мерейтой','Той'],
+  what:['балаларымыздың үйлену тойына','қызымыздың ұзату тойына','ұлымыздың сүндет тойына','баламыздың тұсаукесер тойына','мерейтойымызға','тойымызға'],
+  text:w=>`Құрметті ағайын-туыс, құда-жекжат, дос-жарандар!\nСіздерді ${w} арналған салтанатты ақ дастарханымыздың қадірлі қонағы болуға шақырамыз.`,
+  months:['қаңтар','ақпан','наурыз','сәуір','мамыр','маусым','шілде','тамыз','қыркүйек','қазан','қараша','желтоқсан'],
+  days:['жексенбі','дүйсенбі','сейсенбі','сәрсенбі','бейсенбі','жұма','сенбі'],
+  open:'Шақыруды ашу',date:'Той күні',start:'Басталуы',left:'Тойға дейін',u:['күн','сағат','минут','секунд'],passed:'Той өтті. Рақмет!',
+  where:'Өтетін орны',map:'Картадан ашу',hosts:'Той иелері',rsvp:'Келетініңізді растаңыз',name:'Аты-жөніңіз',cnt:'Қонақ саны',
+  yes:'Келемін',no:'Келе алмаймын',cal:'Күнтізбеге қосу',
+  mYes:(n,c)=>`Сәлеметсіз бе! ${n} — тойға келеміз, ${c} адам.`,mNo:n=>`Сәлеметсіз бе! ${n} — өкінішке орай, тойға келе алмаймыз.`,
+  rsvpDemo:'Қонақтардың жауабы төлемнен кейін қосылады',made:'Шақыру Toiga сайтында жасалды —',make:'өзіңізге де жасаңыз',
+  demo:'Бұл — үлгі нұсқа. «Үлгі» жазуын алып тастау:',pay:'Төлеу '+PRICE,
+  payMsg:l=>`Сәлеметсіз бе! Toiga шақыруын төлегім келеді (${PRICE}). Сілтемем: ${l}`},
+ ru:{kinds:['Свадьба','Қыз ұзату','Сүндет той','Тұсаукесер','Юбилей','Той'],
+  what:['на свадьбе наших детей','на проводах нашей дочери','на сүндет тое нашего сына','на тұсаукесер нашего малыша','на нашем юбилее','на нашем празднике'],
+  text:w=>`Дорогие родные и друзья!\nПриглашаем вас разделить с нами радость и стать почётными гостями ${w}.`,
+  months:['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+  days:['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+  open:'Открыть приглашение',date:'Дата',start:'Начало',left:'До тоя осталось',u:['дней','часов','минут','секунд'],passed:'Той состоялся. Спасибо!',
+  where:'Место проведения',map:'Открыть карту',hosts:'Хозяева тоя',rsvp:'Подтвердите участие',name:'Ваше имя',cnt:'Сколько гостей',
+  yes:'Приду',no:'Не смогу',cal:'Добавить в календарь',
+  mYes:(n,c)=>`Здравствуйте! ${n} — придём на той, нас ${c}.`,mNo:n=>`Здравствуйте! ${n} — к сожалению, не сможем прийти на той.`,
+  rsvpDemo:'Ответы гостей включаются после оплаты',made:'Приглашение сделано на Toiga —',make:'создайте своё',
+  demo:'Это демо-версия. Убрать надпись «демо»:',pay:'Оплатить '+PRICE,
+  payMsg:l=>`Здравствуйте! Хочу оплатить приглашение Toiga (${PRICE}). Моя ссылка: ${l}`}
+};
+const STYLES=[['Алтын','#fbf6ec','#b08a4a'],['Түн','#10241f','#d9b66c'],['Гүл','#fbf1ef','#b9737c'],['Аспан','#eef6fa','#1f89ad']];
+const ORN=`<svg class="orn" viewBox="0 0 240 40" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 20h68M232 20h-68"/><path d="M120 7l11 13-11 13-11-13z"/><path d="M120 14l5 6-5 6-5-6z" fill="currentColor"/><path d="M104 20c-6-13-23-11-23 0 0 8 10 9 12 3 1-3-2-6-5-3"/><path d="M136 20c6-13 23-11 23 0 0 8-10 9-12 3-1-3 2-6 5-3"/></g></svg>`;
+
+/* ===== тексты сайта ===== */
+const UI = {
+ ru:{h1:'Онлайн-шақыру на той — <i>за 2 минуты</i>',lead:'Красивое приглашение-сайт с таймером, картой и подтверждением гостей. Заполните форму — и сразу отправляйте ссылку в WhatsApp.',
+  cta:'Создать приглашение',b1:'Қазақша и на русском',b2:'Без музыки и лишнего',b3:'Готово сразу, а не через сутки',
+  howT:'Как это работает',s1t:'Заполните форму',s1p:'Имена, дата, ресторан, адрес. Приглашение меняется у вас на глазах.',
+  s2t:'Получите ссылку',s2p:'Демо бесплатно: посмотрите, как увидят гости, покажите семье.',
+  s3t:'Оплатите и отправляйте',s3p:'Перевод Kaspi — и мы присылаем чистую ссылку без надписи «демо».',
+  makeT:'Создайте своё приглашение',fType:'Какой той',fLang:'Язык приглашения',fNames:'Имена (главная надпись)',fDate:'Дата',fTime:'Начало',
+  fPlace:'Ресторан / место',fAddr:'Адрес',fMap:'Ссылка на 2GIS или карту (необязательно)',fHosts:'Хозяева тоя',fWa:'Ваш WhatsApp для ответов гостей',
+  fText:'Текст приглашения (можно оставить наш)',fStyle:'Оформление',fGo:'Получить ссылку',
+  oT:'Ваше приглашение готово',oP:'Это демо-ссылка — на ней видна надпись «Үлгі · Демо». После оплаты пришлём такую же, но чистую.',
+  oCopy:'Копировать',oCopied:'Готово ✓',oOpen:'Посмотреть как гость',oPay:'Оплатить '+PRICE+' в WhatsApp',
+  oNote:'Напишите нам — пришлём реквизиты Kaspi и готовую ссылку в течение дня.',prevNote:'Так приглашение выглядит в телефоне гостя',
+  prT:'Цена',p0n:'Демо',p0a:'Все 4 оформления',p0b:'Ссылка, которую можно показать семье',p0c:'С надписью «Үлгі · Демо»',
+  p1n:'Готовое приглашение · один раз',p1a:'Без надписи «демо»',p1b:'Гости подтверждают участие вам в WhatsApp',p1c:'Таймер, карта, календарь',p1d:'Одна правка после оплаты — бесплатно',
+  fqT:'Частые вопросы',q1:'Как гости откроют приглашение?',a1:'Вы отправляете обычную ссылку в WhatsApp или Telegram. Она открывается в браузере любого телефона, ничего устанавливать не нужно.',
+  q2:'Как оплатить?',a2:'Нажмите «Оплатить» — откроется WhatsApp с вашей ссылкой. Мы пришлём реквизиты Kaspi, а после перевода — чистую ссылку.',
+  q3:'Можно исправить после оплаты?',a3:'Да, одна правка бесплатно: дата, время, адрес или текст. Напишите нам в WhatsApp.',
+  q4:'Есть ли музыка и фото?',a4:'Нет: приглашение лёгкое, без музыки и без фотографий, открывается мгновенно даже при слабом интернете.',
+  ft:'онлайн-приглашения на той. Тараз, Казахстан.',
+  dNames:'Әлихан & Айгерім',dPlace:'«Ақ Орда» мейрамханасы',dAddr:'Тараз қ., мысалы: Төле би даңғылы, 1',dHosts:'Сейітовтер әулеті'},
+ kk:{h1:'Тойға онлайн-шақыру — <i>2 минутта</i>',lead:'Таймері, картасы және қонақтардың жауабы бар әдемі шақыру-сайт. Форманы толтырыңыз да, сілтемені бірден WhatsApp-қа жіберіңіз.',
+  cta:'Шақыру жасау',b1:'Қазақша және орысша',b2:'Музыкасыз, артық дүниесіз',b3:'Бір тәулік күтпейсіз — бірден дайын',
+  howT:'Қалай жұмыс істейді',s1t:'Форманы толтырыңыз',s1p:'Есімдер, күні, мейрамхана, мекенжай. Шақыру көз алдыңызда өзгереді.',
+  s2t:'Сілтеме алыңыз',s2p:'Үлгі тегін: қонақтар қалай көретінін қараңыз, отбасыңызға көрсетіңіз.',
+  s3t:'Төлеп, жібере беріңіз',s3p:'Kaspi аударымы — біз «үлгі» жазуы жоқ таза сілтеме жібереміз.',
+  makeT:'Өз шақыруыңызды жасаңыз',fType:'Қандай той',fLang:'Шақыру тілі',fNames:'Есімдер (басты жазу)',fDate:'Күні',fTime:'Басталуы',
+  fPlace:'Мейрамхана / орын',fAddr:'Мекенжай',fMap:'2GIS немесе карта сілтемесі (міндетті емес)',fHosts:'Той иелері',fWa:'Қонақтар жауап беретін WhatsApp нөміріңіз',
+  fText:'Шақыру мәтіні (біздікін қалдыруға болады)',fStyle:'Безендіру',fGo:'Сілтеме алу',
+  oT:'Шақыруыңыз дайын',oP:'Бұл — үлгі сілтеме, онда «Үлгі · Демо» жазуы көрінеді. Төлемнен кейін дәл осындай таза сілтеме жібереміз.',
+  oCopy:'Көшіру',oCopied:'Дайын ✓',oOpen:'Қонақ ретінде қарау',oPay:PRICE+' төлеу — WhatsApp',
+  oNote:'Бізге жазыңыз — Kaspi деректемелерін және дайын сілтемені бір күн ішінде жібереміз.',prevNote:'Шақыру қонақтың телефонында осылай көрінеді',
+  prT:'Бағасы',p0n:'Үлгі',p0a:'4 безендірудің бәрі',p0b:'Отбасыңызға көрсететін сілтеме',p0c:'«Үлгі · Демо» жазуымен',
+  p1n:'Дайын шақыру · бір рет төлем',p1a:'«Үлгі» жазуынсыз',p1b:'Қонақтар келетінін сізге WhatsApp-пен растайды',p1c:'Таймер, карта, күнтізбе',p1d:'Төлемнен кейін бір түзету — тегін',
+  fqT:'Жиі қойылатын сұрақтар',q1:'Қонақтар шақыруды қалай ашады?',a1:'Сіз WhatsApp немесе Telegram арқылы кәдімгі сілтеме жібересіз. Ол кез келген телефонның браузерінде ашылады, ештеңе орнатудың қажеті жоқ.',
+  q2:'Қалай төлеймін?',a2:'«Төлеу» батырмасын басыңыз — сілтемеңізбен WhatsApp ашылады. Біз Kaspi деректемелерін, ал аударымнан кейін таза сілтемені жібереміз.',
+  q3:'Төлемнен кейін түзетуге бола ма?',a3:'Иә, бір түзету тегін: күні, уақыты, мекенжайы немесе мәтіні. Бізге WhatsApp-қа жазыңыз.',
+  q4:'Музыка мен фото бар ма?',a4:'Жоқ: шақыру жеңіл, музыкасыз және фотосуретсіз, интернет әлсіз болса да лезде ашылады.',
+  ft:'тойға онлайн-шақырулар. Тараз, Қазақстан.',
+  dNames:'Әлихан & Айгерім',dPlace:'«Ақ Орда» мейрамханасы',dAddr:'Тараз қ., мысалы: Төле би даңғылы, 1',dHosts:'Сейітовтер әулеті'}
+};
+
+/* ===== утилиты ===== */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const b64u=b=>{let s='';b.forEach(x=>s+=String.fromCharCode(x));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
+const ub64=s=>Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));
+const KEYS=['t','l','n','d','h','p','a','m','o','w','x','s'];
+const pack=d=>b64u(new TextEncoder().encode(JSON.stringify(KEYS.map(k=>d[k]??''))));
+function unpack(s){const a=JSON.parse(new TextDecoder().decode(ub64(s)));if(!Array.isArray(a))throw 0;const d={};KEYS.forEach((k,i)=>d[k]=a[i]??'');
+ d.t=Math.min(5,Math.max(0,+d.t||0));d.s=Math.min(3,Math.max(0,+d.s||0));d.l=d.l==='ru'?'ru':'kk';return d}
+async function verify(data,sig){try{const k=await crypto.subtle.importKey('jwk',PUB,{name:'ECDSA',namedCurve:'P-256'},false,['verify']);
+ return await crypto.subtle.verify({name:'ECDSA',hash:'SHA-256'},k,ub64(sig),new TextEncoder().encode(data))}catch(e){return false}}
+const phone=s=>{let d=String(s||'').replace(/\D/g,'');if(d.length===11&&d[0]==='8')d='7'+d.slice(1);if(d.length===10)d='7'+d;return d.length===11?d:''};
+const safeUrl=u=>/^https?:\/\/[^\s"'<>]+$/i.test(u||'')?u:'';
+const baseUrl=()=>location.href.split('#')[0];
+const when=d=>{const m=/^(\d{4})-(\d\d)-(\d\d)$/.exec(d.d||''),t=/^(\d\d):(\d\d)$/.exec(d.h||'')||[0,'18','00'];return m?new Date(+m[1],m[2]-1,+m[3],+t[1],+t[2]):null};
+
+/* ===== отрисовка приглашения ===== */
+let timers=[];
+function render(el,d,o={}){
+ const L=T[d.l],dt=when(d),paid=!!o.paid,link=o.link||'';
+ const txt=(d.x||'').trim()||L.text(L.what[d.t]);
+ const map=safeUrl(d.m),wa=phone(d.w);
+ const p2=n=>String(n).padStart(2,'0');
+ let cal='';
+ if(dt){const f=x=>x.getFullYear()+p2(x.getMonth()+1)+p2(x.getDate())+'T'+p2(x.getHours())+p2(x.getMinutes())+'00',e=new Date(+dt+4*36e5);
+  cal='https://calendar.google.com/calendar/render?action=TEMPLATE&text='+encodeURIComponent(L.kinds[d.t]+': '+d.n)+'&dates='+f(dt)+'/'+f(e)+'&ctz=Asia/Almaty&location='+encodeURIComponent([d.p,d.a].filter(Boolean).join(', '))}
+ const dateLine=dt?`${dt.getDate()} ${L.months[dt.getMonth()]} ${dt.getFullYear()}`:'';
+ el.innerHTML=`<div class="inv s${d.s}" lang="${d.l}">
+ ${paid?'':'<div class="wm"></div>'}
+ ${o.cover?`<div class="cover" data-cover>${ORN}<div class="kind" style="margin-top:18px">${esc(L.kinds[d.t])}</div><div class="names">${esc(d.n)}</div><div class="cdate">${esc(dateLine)}</div><button class="ib" type="button" data-open>${L.open}</button></div>`:''}
+ <div data-body ${o.cover?'hidden':''}>
+ <div class="in">
+  <div class="sec rv" style="padding-top:54px">${ORN}<div class="kind" style="margin-top:20px">${esc(L.kinds[d.t])}</div><div class="names">${esc(d.n)}</div><p class="txt">${esc(txt)}</p></div>
+  ${dt?`<div class="sec rv"><div class="frame"><div class="lbl">${L.date}</div><div class="day">${dt.getDate()}</div><div class="my">${L.months[dt.getMonth()]} ${dt.getFullYear()}</div><div class="wd">${L.days[dt.getDay()]}</div><div class="time">${L.start}: ${esc(d.h)}</div></div></div>
+  <div class="sec rv"><div class="lbl">${L.left}</div><div class="cd" data-cd></div></div>`:''}
+  ${d.p?`<div class="sec rv">${ORN}<div class="lbl" style="margin-top:18px">${L.where}</div><div class="place">${esc(d.p)}</div><div class="addr">${esc(d.a)}</div>${map?`<a class="ib" href="${esc(map)}" target="_blank" rel="noopener">${L.map}</a>`:''}</div>`:''}
+  ${d.o?`<div class="sec rv"><div class="lbl">${L.hosts}</div><div class="hosts">${esc(d.o)}</div></div>`:''}
+  ${wa?`<div class="sec rv"><div class="frame"><div class="lbl">${L.rsvp}</div><div class="rsvp">
+    <input data-gn placeholder="${L.name}" maxlength="50" aria-label="${L.name}">
+    <select data-gc aria-label="${L.cnt}">${[1,2,3,4,5,6].map(n=>`<option value="${n}">${L.cnt}: ${n}</option>`).join('')}</select>
+    ${paid?`<div class="two"><a class="ib" data-yes target="_blank" rel="noopener">${L.yes}</a><a class="ib line" data-no target="_blank" rel="noopener">${L.no}</a></div>`
+     :`<div class="two"><span class="ib" style="opacity:.45">${L.yes}</span><span class="ib line" style="opacity:.45">${L.no}</span></div><p class="note">${L.rsvpDemo}</p>`}
+   </div></div></div>`:''}
+  ${cal?`<div class="sec rv" style="padding-top:6px"><a class="ib line" href="${esc(cal)}" target="_blank" rel="noopener">${L.cal}</a></div>`:''}
+  <div class="made">${L.made} <a href="${esc(baseUrl())}" data-home>${L.make}</a></div>
+ </div>
+ ${paid?'':`<div class="pay"><span>${L.demo}</span><a href="https://wa.me/${SELLER_WA}?text=${encodeURIComponent(L.payMsg(link))}" target="_blank" rel="noopener">${L.pay}</a></div>`}
+ </div></div>`;
+ const root=el.firstElementChild,body=root.querySelector('[data-body]');
+ const reveal=()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{root:o.scroller||null,threshold:.12});
+  root.querySelectorAll('.rv').forEach(x=>o.instant?x.classList.add('on'):io.observe(x))};
+ const ob=root.querySelector('[data-open]');
+ if(ob)ob.onclick=()=>{root.querySelector('[data-cover]').hidden=true;body.hidden=false;scrollTo(0,0);reveal()};else reveal();
+ const cd=root.querySelector('[data-cd]');
+ if(cd){const tick=()=>{let s=Math.floor((dt-Date.now())/1000);if(s<=0){cd.outerHTML=`<p class="txt">${L.passed}</p>`;return false}
+   const v=[Math.floor(s/86400),Math.floor(s%86400/3600),Math.floor(s%3600/60),s%60];cd.innerHTML=v.map((x,i)=>`<div><b>${x}</b><span>${L.u[i]}</span></div>`).join('');return true};
+  if(tick()){const id=setInterval(()=>{if(!cd.isConnected||!tick())clearInterval(id)},1000);timers.push(id)}}
+ if(paid&&wa){const gn=root.querySelector('[data-gn]'),gc=root.querySelector('[data-gc]'),y=root.querySelector('[data-yes]'),n=root.querySelector('[data-no]');
+  const up=()=>{const nm=gn.value.trim()||'—';y.href=`https://wa.me/${wa}?text=`+encodeURIComponent(L.mYes(nm,gc.value));n.href=`https://wa.me/${wa}?text=`+encodeURIComponent(L.mNo(nm))};
+  gn.oninput=gc.onchange=up;up()}
+ const hm=root.querySelector('[data-home]');if(hm&&o.onHome)hm.onclick=e=>{e.preventDefault();o.onHome()};
+}
+
+/* ===== сайт: язык, форма, предпросмотр ===== */
+let ui=(navigator.language||'').toLowerCase().startsWith('kk')?'kk':'ru';
+try{ui=localStorage.getItem('toiga-ui')||ui}catch(e){}
+const f=$('#f');let style=0,touched={};
+function applyUI(){
+ const U=UI[ui];document.documentElement.lang=ui;
+ document.querySelectorAll('[data-i]').forEach(e=>{e.innerHTML=U[e.dataset.i]});
+ document.querySelectorAll('[data-ui]').forEach(b=>b.classList.toggle('on',b.dataset.ui===ui));
+ const sel=f.t.value||0;f.t.innerHTML=T[ui].kinds.map((k,i)=>`<option value="${i}">${k}</option>`).join('');f.t.value=sel;
+ document.title=ui==='kk'?'Toiga — тойға онлайн-шақыру 2 минутта':'Toiga — онлайн-шақыру за 2 минуты';
+}
+function formData(){return{t:+f.t.value,l:f.l.value,n:f.n.value.trim(),d:f.d.value,h:f.h.value,p:f.p.value.trim(),a:f.a.value.trim(),m:safeUrl(f.m.value.trim()),o:f.o.value.trim(),w:phone(f.w.value),x:f.x.value.trim(),s:style}}
+function preview(){timers.forEach(clearInterval);timers=[];const d=formData();if(!d.w)d.w=SELLER_WA;
+ render($('#prev'),d,{instant:true});render($('#heroPrev'),d,{instant:true})}
+function initForm(){
+ const U=UI[ui],d=new Date(Date.now()+60*864e5),p2=n=>String(n).padStart(2,'0');
+ f.l.value=ui;f.n.value=U.dNames;f.d.value=`${d.getFullYear()}-${p2(d.getMonth()+1)}-${p2(d.getDate())}`;f.h.value='18:00';
+ f.p.value=U.dPlace;f.a.value=U.dAddr;f.o.value=U.dHosts;
+ $('#styles').innerHTML=STYLES.map((s,i)=>`<button type="button" data-s="${i}"><i style="background:linear-gradient(135deg,${s[1]} 50%,${s[2]} 50%)"></i>${s[0]}</button>`).join('');
+ const mark=()=>document.querySelectorAll('[data-s]').forEach(b=>b.classList.toggle('on',+b.dataset.s===style));mark();
+ $('#styles').onclick=e=>{const b=e.target.closest('[data-s]');if(b){style=+b.dataset.s;mark();preview();$('#out').hidden=true}};
+ f.oninput=()=>{preview();$('#out').hidden=true};
+ /* примерные значения стираются при первом касании поля */
+ ['n','p','a','o'].forEach(k=>f[k].addEventListener('focus',()=>{if(!touched[k]){touched[k]=1;f[k].value='';preview()}}));
+ f.onsubmit=e=>{e.preventDefault();const d=formData(),link=baseUrl()+'#i='+pack(d);cur={d,link};
+  $('#link').value=link;$('#payBtn').href='https://wa.me/'+SELLER_WA+'?text='+encodeURIComponent(T[ui].payMsg(link));
+  $('#out').hidden=false;$('#out').scrollIntoView({behavior:'smooth',block:'center'})};
+ $('#copy').onclick=async()=>{const i=$('#link');try{await navigator.clipboard.writeText(i.value)}catch(e){i.focus();i.select();try{document.execCommand('copy')}catch(_){}}
+  $('#copy').textContent=UI[ui].oCopied;setTimeout(()=>$('#copy').textContent=UI[ui].oCopy,1600)};
+ $('#open').onclick=()=>{showInvite(cur.d,false,cur.link);try{history.pushState(null,'','#i='+pack(cur.d))}catch(e){}};
+ document.querySelectorAll('[data-ui]').forEach(b=>b.onclick=()=>{ui=b.dataset.ui;try{localStorage.setItem('toiga-ui',ui)}catch(e){}applyUI();
+  if(!Object.keys(touched).length){f.l.value=ui}preview()});
+}
+let cur=null;
+function showHome(){timers.forEach(clearInterval);timers=[];$('#view-inv').hidden=true;$('#view-inv').innerHTML='';$('#view-home').hidden=false;preview();scrollTo(0,0)}
+function showInvite(d,paid,link){timers.forEach(clearInterval);timers=[];$('#view-home').hidden=true;const v=$('#view-inv');v.hidden=false;
+ render(v,d,{cover:true,paid,link,onHome:()=>{try{history.pushState(null,'','#')}catch(e){}showHome()}});
+ document.title=T[d.l].kinds[d.t]+' — '+d.n;scrollTo(0,0)}
+async function route(){
+ const m=/[#&]i=([\w-]+)(?:&s=([\w-]+))?/.exec(location.hash);
+ if(!m){if(!$('#view-inv').hidden)showHome();return}
+ let d;try{d=unpack(m[1])}catch(e){showHome();return}
+ const paid=m[2]?await verify(m[1],m[2]):false;
+ showInvite(d,paid,location.href);
+}
+applyUI();initForm();preview();route();
+addEventListener('hashchange',route);addEventListener('popstate',route);
+</script>
+</body>
+</html>
